@@ -1,0 +1,6 @@
+#dependencies
+/node_modules
+/package.json
+/dist
+/.parcel-cache
+/.DS_Store
