@@ -1,28 +1,20 @@
 import { useState } from "react";
 import { restaurantList } from "../config";
 import RestaurantCard from "./RestaurantCard";
+
+function filterData(sText,restaurants){
+ const filteredData= restaurants.filter((rest)=>rest.data.data.name.includes(sText));
+ return filteredData;
+}
 const Body = () => {
   //  let searchTxt="KFC";
   //searchText is a local state variable
   const [searchText,setSearchText]=useState();
-  const [searchClicked,setSearchedClicked]=useState("false");
+  // const [searchClicked,setSearchedClicked]=useState("false");
+  const [restaurants,setRestaurants]=useState(restaurantList);
   return (
     <>
-      {/* <div className="search-container">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Search"
-          value={searchTxt}
-          onChange={(e)=>{
-            searchTxt=e.target.value
-          }}
-        />
-        <button className="search-btn">search</button>
-      </div> */}
-
-
-      <div className="search-container">
+     <div className="search-container">
         <input
           type="text"
           className="search-input"
@@ -33,17 +25,16 @@ const Body = () => {
             }}
         />
         <button className="search-btn" onClick={()=>{
-            if(searchClicked==="false")
-            setSearchedClicked("true");
-            else setSearchedClicked("false")
-          
+            // need to filter the data
+            // update the state variable
+            const data=filterData(searchText,restaurants);
+            setRestaurants(data);
         }}>search</button>
-        <h2>{searchText}</h2>
-        <h3>{searchClicked}</h3>
+    
       </div>
 
       <div className="restaurant-list">
-        {restaurantList.map((res) => {
+        {restaurants.map((res) => {
           return <RestaurantCard key={res.data.data.id} {...res.data.data} />;
         })}
       </div>
