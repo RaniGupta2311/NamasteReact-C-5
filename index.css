@@ -33,3 +33,20 @@
 .card>img{
     width:100%;
 }
+/* Shimmer styles */
+.shimmer-img{
+    width:100%;
+    height:120px;
+    background-color: rgb(204, 197, 197);
+}
+.shimmer-name{
+    width:90%;
+    height:20px;
+    background-color: rgb(204, 197, 197);
+    margin:5px 0;
+}
+.shimmer-cui{
+    width:80%;
+    height:15px;
+    background-color: rgb(204, 197, 197);
+}
