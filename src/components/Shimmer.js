@@ -1,16 +1,7 @@
 import ShimmerCard from "./ShimmerCard"
 const Shimmer=()=>{
     return <div className="restaurant-list">
-       <ShimmerCard/>
-       <ShimmerCard/>
-       <ShimmerCard/>
-       <ShimmerCard/>
-       <ShimmerCard/>
-       <ShimmerCard/>
-       <ShimmerCard/>
-       <ShimmerCard/>
-       <ShimmerCard/>
-       <ShimmerCard/>
+      {Array(12).fill("").map((e,index)=><ShimmerCard key={index}/>)}
     </div>
 }
 export default Shimmer

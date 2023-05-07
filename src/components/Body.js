@@ -10,41 +10,11 @@ function filterData(sText, restaurants) {
   return filteredData;
 }
 const Body = () => {
-  //  let searchTxt="KFC";
-  //searchText is a local state variable
-  // fetch("")
   const [searchText, setSearchText] = useState();
-  // const [searchClicked,setSearchedClicked]=useState("false");
-  // const [restaurants,setRestaurants]=useState(restaurantList);
-  // const [restaurants,setRestaurants]=useState([]);
-
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
 
-  // console.log("render()")
-  // console.log(restaurants);
-
-  // useEffect(()=>{
-  //   console.log("call this when dependency is changed")
-  // },[])
-  // It will be called only once
-
-  // useEffect(()=>{
-  //   console.log("call this when dependency is changed")
-  // },[searchText])
-  // it will be called when searchText changed
-
-  // useEffect(()=>{
-  //      console.log("call this when dependency is changed")
-  //    },[restaurants])
-
-  // useEffect(()=>{
-  //   console.log("useEffect")
-  // },[])
-  console.log("render");
-
   useEffect(() => {
-    // API call
     getRestaurants();
   }, []);
 
@@ -54,14 +24,9 @@ const Body = () => {
     );
     const json = await data.json();
     console.log(json);
-    // console.log(json.data.cards[0].data.data.cards)
-    // optional chaining
     setAllRestaurants(json?.data?.cards[0]?.data?.data?.cards);
     setFilteredRestaurants(json?.data?.cards[0]?.data?.data?.cards);
   }
-
-  // if my all restaurant is not there
-  // this is called early return
   if (!allRestaurants) return null;
 
   return allRestaurants.length === 0 ? (
@@ -81,8 +46,6 @@ const Body = () => {
         <button
           className="search-btn"
           onClick={() => {
-            // need to filter the data
-            // update the state variable
             const data = filterData(searchText, allRestaurants);
             setFilteredRestaurants(data);
           }}
@@ -92,7 +55,6 @@ const Body = () => {
       </div>
 
       <div className="restaurant-list">
-        {/* JS expressions and statement, you can't use statement here */}
         {
           filteredRestaurants.length===0?<h2>Oops!!No Restaurant Found...</h2>:filteredRestaurants.map((res) => {
           return <RestaurantCard key={res.data.id} {...res.data} />;
